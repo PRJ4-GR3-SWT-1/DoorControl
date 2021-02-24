@@ -1,12 +1,12 @@
 ﻿namespace DoorControl
 {
-    public interface IEntryNotefication
+    public interface IEntryNotification
     {
         void NotifyEntryDenied(int id);
         void NotifyEntryGranted(int id);
     }
 
-    class EntryNotefication : IEntryNotefication
+    class EntryNotification : IEntryNotification
     {
         public void NotifyEntryDenied(int id)
         {
