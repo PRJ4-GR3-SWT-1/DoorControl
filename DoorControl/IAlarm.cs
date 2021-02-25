@@ -1,4 +1,6 @@
-﻿namespace DoorControl
+﻿using System;
+
+namespace DoorControlNS
 {
    public interface IAlarm
     {
@@ -10,7 +12,7 @@
     {
         public void RaiseAlarm()
         {
-            throw new System.NotImplementedException();
+            Console.WriteLine("ALLLLAAAAAARRRMMMM");
         }
     }
 }

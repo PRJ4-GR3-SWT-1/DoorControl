@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DoorControl
+namespace DoorControlNS
 {
     class Program
     {

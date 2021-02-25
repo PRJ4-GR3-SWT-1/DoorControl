@@ -1,21 +1,30 @@
-﻿namespace DoorControl
+﻿using System;
+using System.Threading;
+
+namespace DoorControlNS
 {
     public interface IDoor
     {
-        void Open();
-        void Close();
+        void Open(DoorControl door);
+        void Close(DoorControl door);
     }
 
     public class Door : IDoor
     {
-        public void Open()
+        public void Open(DoorControl door)
         {
-            throw new System.NotImplementedException();
+           Console.WriteLine("Opening Door");
+           Thread.Sleep(300);
+           Console.WriteLine("Door opened");
+           door.DoorOpened();
         }
 
-        public void Close()
+        public void Close(DoorControl door)
         {
-            throw new System.NotImplementedException();
+            Console.WriteLine("Closing Door");
+            Thread.Sleep(300);
+            Console.WriteLine("Door closed");
+            door.DoorClosed();
         }
     }
 }

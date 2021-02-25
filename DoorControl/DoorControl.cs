@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Threading;
 
-namespace DoorControl
+namespace DoorControlNS
 {
     public class DoorControl
     {
-        public DoorControl(IDoor door, IEntryNotification entryNot, IAlarm alarm, IUserValidation userValidator, IEntryNotification entryNotification)
+        public DoorControl(IDoor door, IAlarm alarm, IUserValidation userValidator, IEntryNotification entryNotification)
         {
             _door = door;
             _alarm = alarm;
@@ -17,7 +17,7 @@ namespace DoorControl
             _allowedAcces = _userValidator.ValidateEntryRequest(id);
             if (_allowedAcces)
             {
-                _door.Open();
+                _door.Open(this);
                 _entryNotification.NotifyEntryGranted(id);
             }
             else
@@ -31,13 +31,15 @@ namespace DoorControl
         {
             if (_allowedAcces) { 
                 Thread.Sleep(1000);
-                _door.Close();
+                _door.Close(this);
             }
             else
             {
-                _door.Close();
+                _door.Close(this);
                 _alarm.RaiseAlarm();
             }
+
+            _allowedAcces = false;
         }
 
         public void DoorClosed()

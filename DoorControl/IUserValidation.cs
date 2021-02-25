@@ -1,4 +1,4 @@
-﻿namespace DoorControl
+﻿namespace DoorControlNS
 {
     public interface IUserValidation
     {
